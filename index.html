@@ -15,10 +15,31 @@
     </div>
     </div>
     </div>
+    <section class="notif-section">
+        <div class="notifation-container">
+            <div class="notif-wrapper">
+                <div class="box">
+                    <div class="notification-badge" id="notification-count">0
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 </body>
 <script>
+const notificationCountElement = document.getElementById('notifacation-count');
 
+const storageKey = 'refreshCount';
+
+function initializeCounter () {
+    let currrentCount = parseInt(localStorage.getItem(storageKey))  || 0;
+    currrentCount += 1;
+    localStorage.setItem(storageKey, currrentCount.toString());
+
+    notificationCountElement.textContent =currrentCount;
+}
+
+window.onload = initializeCounter;
 </script>
 </html>
